@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import s from './users.module.css'
 
 const Users = ({ removeUser ,getFilteredUsers, handleFilter }) => {
-  const elements = getFilteredUsers.map(({ id, name, number }) => (
-    <li className={s.item} key={id}>
-      {name}: {number} <button className={s.btn} onClick={() => removeUser(id)}>Delete</button>
-    </li>
-  ));
+  // const elements = getFilteredUsers.map(({ id, name, number }) => (
+  //   <li className={s.item} key={id}>
+  //     {name}: {number} <button className={s.btn} onClick={() => removeUser(id)}>Delete</button>
+  //   </li>
+  // ));
 
   return (
     <>
@@ -20,7 +20,7 @@ const Users = ({ removeUser ,getFilteredUsers, handleFilter }) => {
           onChange={handleFilter}
         ></input>
       </label>
-      <ul>{elements}</ul>
+      {/* <ul>{elements}</ul> */}
     </>
   );
 };
