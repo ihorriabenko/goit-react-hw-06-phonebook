@@ -1,20 +1,24 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
+import { addUser } from 'redux/actions';
+// import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
+
+// import PropTypes from 'prop-types';
 import s from './form.module.css';
 
-import { connect } from 'react-redux';
-import { addUser } from 'redux/actions';
-
-const Form = ({ onSubmit }) => {
+// const Form = ({onSubmit}) {
+const Form = () => {
   const [user, setUser] = useState({
     name: '',
     number: ''
   });
+  const dispatch = useDispatch();
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    onSubmit({ ...user });
+    // onSubmit({ ...user });
+    dispatch(addUser(user))
 
     setUser({
       name: '',
@@ -66,12 +70,14 @@ const Form = ({ onSubmit }) => {
   );
 };
 
-Form.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
+// Form.propTypes = {
+//   onSubmit: PropTypes.func.isRequired,
+// };
 
-const mapDispatchToProps = dispatch => ({
-  onSubmit: (text) => dispatch(addUser(text))
-})
+// const mapDispatchToProps = dispatch => ({
+//   onSubmit: (text) => dispatch(addUser(text))
+// })
 
-export default connect(null, mapDispatchToProps)(Form);
+// export default connect(null, mapDispatchToProps)(Form);
+
+export default Form;
