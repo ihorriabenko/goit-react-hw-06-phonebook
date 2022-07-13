@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid";
-import { ADD_USER, REMOVE_USER, FILTERED_USERS, FILTER } from "./types";
+import { ADD_USER, REMOVE_USER, FILTER_USER } from "./types";
 
 export const addUser = (payload) => {
   return {
@@ -8,39 +8,16 @@ export const addUser = (payload) => {
    }
 }
 
-export const removeUser = (payload) => {
+export const removeUser = (id) => {
   return {
     type: REMOVE_USER,
-    payload,
+    payload: id
   }
 }
 
-export const filter = value => {
+export const filterUser = value => {
   return {
-    type: FILTER,
+    type: FILTER_USER,
     payload: value
   }
 }
-
-export const filteredUsers = () => {
-  return {
-    type: FILTERED_USERS,
-  }
-}
-
-// const getFilteredUsers = () => {
-//   if (!filter) {
-//     return users;
-//   }
-//   const filterValue = filter.toLowerCase();
-//   const filteredUsers = users.filter(({ name }) => {
-//     const nameValue = name.toLowerCase();
-//     return nameValue.includes(filterValue);
-//   });
-
-//   return filteredUsers;
-// };
-
-// const handleFilter = ({ target }) => {
-//   setFilter(target.value);
-// };
